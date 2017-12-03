@@ -1,86 +1,74 @@
 
-#include<iostream> //para leer
+#include<iostream> 
 #include<cmath>
-#include<stdlib.h>//libreria para el random
+#include<stdlib.h> //Writing and random libraries
 #include<time.h>
-
-
-using namespace std;//siempre importante en todos los programas de c++
+using namespace std;
 
 int main(){
 	int m;
-	srand(time(NULL));//inicializamos los numeros aleatorios
-	cout << "Bienvenido" << endl;
-	cout << "Ejercisio numero 3 de matrices" << endl;
-	cout << "Ingrese n que sera el tamaño de la matriz" <<endl;
+	srand(time(NULL));
+	cout <<"Exercise of matrix" << endl;
+	cout <<"Enter n that will be the size of the matrix:" <<endl;
 	cin >> m;
-	int matriz[m][m];
+	int matrix[m][m];
 
 	for(int i =0; i<m; i++){
 		for(int j=0;j<m;j++){
-			matriz[i][j] = -50+rand()%(100);//genera numeros aleatorios entre -50 y 100 para obtener numeros negativos y positvos
+			matrix[i][j] = -50+rand()%(100); //generates random numbers between -50 and 100 to obtain negative and positive numbers
 		}
 	}
-	cout<<"\n"<< endl;
-	cout<<"Los numeros aleatorios son los siguientes :"<<endl;
+	cout<<"\nThe random numbers are the following:"<<endl;
 	for(int i =0; i<m; i++){
 		for(int j=0;j<m;j++){
-			cout<< matriz[i][j]<<" ";
+			cout<< matrix[i][j]<<" ";
 		}
 	}
 	int pares=0;
 	int impares = 0;
 	int positivos = 0;
 	int negativos =0;
-	cout << "\n"<<endl;
-
-	cout<<"El conjunto de Pares es: "<<endl;
+	cout<<"\nThe set of Pares is: "<<endl;
 	for(int i =0; i<m; i++){
 		for(int j=0;j<m;j++){
-			if(matriz[i][j] %2==0){
-				cout<<matriz[i][j]<<" ";
+			if(matrix[i][j] %2==0){
+				cout<<matrix[i][j]<<" ";
 				pares = pares +1;
 			}
 		}
 	}
-	cout<<"\n" <<endl;
-	cout<<"El conjunto de impares es: "<<endl;
+	cout<<"\nThe set of odd is"<<endl;
 	for(int i =0; i<m; i++){
 		for(int j=0;j<m;j++){
-			 if(matriz[i][j] %2!=0){
+			 if(matrix[i][j] %2!=0){
 				impares = impares +1;
-				cout<<matriz[i][j]<<" ";
+				cout<<matrix[i][j]<<" ";
 			}
 		}
 	}
-	
-	cout<<"\n" <<endl;
-	cout<<"El conjunto de postivos es: "<<endl;
+	cout<<"\nThe set of positives is"<<endl;
 	for(int i =0; i<m; i++){
 		for(int j=0;j<m;j++){
-			if(matriz[i][j] >= 0){
+			if(matrix[i][j] >= 0){
 				positivos = positivos +1;
-				cout<<matriz[i][j]<<" ";
+				cout<<matrix[i][j]<<" ";
 			}
 		}
 	}
-	
-	cout<<"\n" <<endl;
-	cout<<"El conjunto negativos es: "<<endl;
+	cout<<"\nThe set of negatives is"<<endl;
 	for(int i =0; i<m; i++){
 		for(int j=0;j<m;j++){
-    		if(matriz[i][j] < 0){
+    		if(matrix[i][j] < 0){
 				negativos = negativos +1;
-				cout<<matriz[i][j]<<" ";
+				cout<<matrix[i][j]<<" ";
 			}
 		}
 	}
 
-	cout <<"\n"<< endl;
-	cout <<"la cantidad de pares es "<<pares<<endl;
-	cout <<"la cantidad de impares es "<<impares<<endl;
-	cout <<"la cantidad de positivos es "<<positivos<<endl;
-	cout <<"la cantidad de negativos es "<<negativos<<endl;
+	cout <<"\nthe number of pairs is "<<pares<<endl;
+	cout <<"the amount of odd is "<<impares<<endl;
+	cout <<"the amount of positives is "<<positivos<<endl;
+	cout <<"the amount of negatives is "<<negativos<<endl;
 	return 0;
 }
 	
