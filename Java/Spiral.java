@@ -6,7 +6,6 @@ import java.io.BufferedWriter;
 import java.io.IOException; //import of libraries
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Random;
 
 public class Ejercisio2 {
     
