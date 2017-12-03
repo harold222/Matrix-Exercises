@@ -1,5 +1,5 @@
 ﻿
-package operacionesmatrices;
+package Harold.p;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,24 +13,30 @@ public class Ejercisio2 {
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
        
     public void mostrarM(int matriz[][],int m) throws IOException{
-
-       int b = m-1; //this will be the limit where the array arrives
-       int a=0; //this will be the starting point of the array
-        for (int i = 0; i < matriz.lenght; i++) {
-            for (int j = 0; j < matriz.lenght; j++) {
-                if(m%m == i){//para el recorrido en java de la primera fila debe ser i= 0, 1
-                    System.out.print(matriz[i][j]+" ");    
-                }if((m+3)%m == b){//1, b para el recorrido de la derecha debe ir disminuyendo
-                    System.out.print(matriz[i][j]+" ");
-                }if((m+2)%m <=j){
-                    System.out.print(matriz[i][j]+" ");
-                }if((m+1)%m <= j){
-                    System.out.print(matriz[i][j]+" ");
-                }
-                b--;
-                m--;
+        int x = 0,y=0,recorrido =0,n=0;
+        while (n < m*m) {
+            switch (recorrido) {
+                case 0: // Recorrido de izquierda a derecha
+                    for (int i = x; i < matriz[0].length - y; i++) 
+                        System.out.print("-" + matriz[x][i]);n++;      
+                    recorrido++;break; 
+                case 1: //Recorrido de arriba abajo
+                    for (int i = x + 1; i < matriz.length - x; i++) 
+                        System.out.print("-" + matriz[i][matriz[0].length - 1 - y]);n++;
+                    recorrido++;break;
+                case 2: //Recorrido de derecha a izquierda
+                    for (int i = matriz[0].length - 2 - y; i >= y; i--) 
+                        System.out.print("-" + matriz[matriz.length - 1 - x][i]);n++;
+                    recorrido++;break;
+                case 3: //Recorrido de abajo a arriba
+                    for (int i = matriz.length - 2 - x; i >= x + 1; i--) 
+                        System.out.print("-" + matriz[i][y]);n++;
+                    recorrido = 0;
+                    x++;y++;//Se aumentan las filas y las columnas para un subnivel en el espiral
+                    break;
             }
         }
+        bw.write("\n");bw.flush();
     }
 
     public static void main(String[] args) throws IOException {
@@ -48,8 +54,7 @@ public class Ejercisio2 {
             }
         }
 
-        bw.write("matrix original\n");
-        bw.flush();
+        bw.write("matrix original\n"); bw.flush();
 
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz.length; j++) {
@@ -58,11 +63,8 @@ public class Ejercisio2 {
             }
             bw.write("\n");
         }
-        
-        //spiral travel
-        bw.write("\n");
-        bw.write("Matrix in spiral:\n");
-        bw.flush();
+       
+        bw.write("\nMatrix in spiral:\n"); bw.flush();
         
         Ejercisio2 o = new Ejercisio2(); //builder
         o.mostrarM(matriz, m); //assigned the parameters
